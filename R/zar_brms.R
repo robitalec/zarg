@@ -20,11 +20,12 @@ zar_brms <-
            priors,
            family = NULL,
            data,
-           sample_priors = TRUE,
+           # sample_priors = TRUE,
            chains = 4,
            iter = 2000,
            cores = 1,
            save_model = NULL,
+           backend = getOption('brms.backend', 'cmdstanr'),
            packages = targets::tar_option_get("packages"),
            library = targets::tar_option_get("library"),
            format = "qs",
@@ -81,7 +82,8 @@ zar_brms <-
       chains = chains,
       iter = iter,
       cores = cores,
-      save_model = save_model
+      save_model = save_model,
+      backend = backend
     ),
     env = env_sample
   )
@@ -166,7 +168,6 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
-  
   
   
   
