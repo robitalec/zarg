@@ -1,5 +1,5 @@
 Package: zarg
-Title: What the Package Does (One Line, Title Case)
+Title: Custom Target Functions and Factories
 Version: 0.0.0.9000
 Authors@R: 
     person("Alec L.", "Robitaille", , "robit.alec@gmail.com", role = c("aut", "cre"),
