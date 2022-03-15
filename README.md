@@ -4,7 +4,9 @@
 ## Functions/factories
 
 -   `zar_brms`: a draft/WIP `brms` integration with targets. Simple
-    target factory
+    target factory generating individual targets for priors, formula,
+    data, priors sampled (for prior predictive simulation/checks),
+    stancode, and fitted `brms` models.
 
 ![](README_files/figure-gfm/tar_viz-1.png)
 
