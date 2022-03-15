@@ -34,7 +34,7 @@ zar_brms <-
            priority = targets::tar_option_get("priority"),
            cue = targets::tar_option_get("cue")
   ) {
-  name_deparse <- deparse(substitute(name))
+  name_deparse <- paste0(deparse(substitute(name)), '_brms')
   
   name_formula <- paste(name_deparse, 'formula', sep = '_')
   name_priors <- paste(name_deparse, 'priors', sep = '_')
