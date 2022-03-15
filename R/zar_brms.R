@@ -65,7 +65,7 @@ zar_brms <-
   env_sample <- list(
     formula = as.symbol(name_formula),
     priors = as.symbol(name_priors),
-    data = as.symbol(data_deparse),
+    data = as.symbol(name_data),
     family = if(is.null(family)) gaussian() else family,
     chains = chains,
     iter = iter,
