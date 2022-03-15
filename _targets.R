@@ -15,7 +15,6 @@ c(
     priors = c(prior(normal(-0.5, 0.2), class = 'b')),
     family = gaussian(),
     data = scaled_data,
-    sample_priors = TRUE,
     chains = 4,
     iter = 2000,
     cores = 1,

@@ -4,7 +4,6 @@
 #' @param formula 
 #' @param priors 
 #' @param data 
-#' @param sample_priors 
 #' @param chains 
 #' @param iter 
 #' @param cores 
@@ -20,7 +19,6 @@ zar_brms <-
            priors,
            family = NULL,
            data,
-           # sample_priors = TRUE,
            chains = 4,
            iter = 2000,
            cores = 1,
