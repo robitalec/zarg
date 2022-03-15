@@ -48,6 +48,30 @@ zar_brms <-
   command_formula <- substitute(brms::brmsformula(formula))
   command_priors <- substitute(priors)
   command_data <- substitute(data)
+  command_stancode <- substitute(
+    make_stancode(
+      formula = formula,
+      data = data,
+      prior = priors,
+      family = if(is.null(family)) gaussian() else family
+    ),
+    env = list(
+      formula = as.symbol(name_formula),
+      priors = as.symbol(name_priors),
+      data = as.symbol(name_data),
+      family = family
+    ))
+  env_sample <- list(
+    formula = as.symbol(name_formula),
+    priors = as.symbol(name_priors),
+    data = as.symbol(data_deparse),
+    family = if(is.null(family)) gaussian() else family,
+    chains = chains,
+    iter = iter,
+    cores = cores,
+    save_model = save_model,
+    backend = backend
+  )
   command_sample_priors <-  substitute(
     brms::brm(
       formula = formula,
@@ -59,24 +83,23 @@ zar_brms <-
       cores = cores,
       save_model = save_model
     ),
-    env = list(
-      formula = as.symbol(name_formula),
-      priors = as.symbol(name_priors),
-      data = as.symbol(name_data)
-    )
+    env = env_sample
   )
-  command_stancode <- substitute(
-    make_stancode(
+  command_sample <- substitute(
+    brm(
       formula = formula,
       data = data,
       prior = priors,
-      family = if(is.null(family)) gaussian() else family
+      sample_prior = 'no',
+      chains = chains,
+      iter = iter,
+      cores = cores,
+      save_model = save_model,
+      backend = backend
     ),
-    env = list(
-      formula = as.symbol(name_formula),
-      priors = as.symbol(name_priors),
-      data = as.symbol(name_data)
-    ))
+    env = env_sample
+  )
+  
   
   target_formula <- tar_target_raw(
     name = name_formula,
