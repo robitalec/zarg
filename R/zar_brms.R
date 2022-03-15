@@ -168,6 +168,19 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
+  target_sample <- tar_target_raw(
+    name = name_sample,
+    command = command_sample,
+    packages = packages,
+    library = library,
+    format = format,
+    error = error,
+    memory = memory,
+    garbage_collection = garbage_collection,
+    deployment = deployment,
+    priority = priority,
+    cue = cue
+  )
   
   
   
@@ -179,7 +192,8 @@ zar_brms <-
       target_priors,
       target_data,
       target_sample_priors,
-      target_stancode
+      target_stancode,
+      target_sample
     )
   )
   
