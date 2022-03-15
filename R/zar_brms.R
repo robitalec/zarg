@@ -18,6 +18,7 @@ zar_brms <-
   function(name,
            formula,
            priors,
+           family = NULL,
            data,
            sample_priors = TRUE,
            chains = 4,
