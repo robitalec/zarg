@@ -1,5 +1,39 @@
-zar_brms <- function(name, formula, priors, data, sample_priors, chains = 4,
-                     iter = 2000, cores = 1, save_model = NULL) {
+#' zar_brms
+#'
+#' @param name 
+#' @param formula 
+#' @param priors 
+#' @param data 
+#' @param sample_priors 
+#' @param chains 
+#' @param iter 
+#' @param cores 
+#' @param save_model 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+zar_brms <-
+  function(name,
+           formula,
+           priors,
+           data,
+           sample_priors = TRUE,
+           chains = 4,
+           iter = 2000,
+           cores = 1,
+           save_model = NULL,
+           packages = targets::tar_option_get("packages"),
+           library = targets::tar_option_get("library"),
+           format = "qs",
+           error = targets::tar_option_get("error"),
+           memory = targets::tar_option_get("memory"),
+           garbage_collection = targets::tar_option_get("garbage_collection"),
+           deployment = targets::tar_option_get("deployment"),
+           priority = targets::tar_option_get("priority"),
+           cue = targets::tar_option_get("cue")
+  ) {
   name_deparse <- deparse(substitute(name))
   data_deparse <- deparse(substitute(data))
   
