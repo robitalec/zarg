@@ -34,6 +34,9 @@ zar_brms <-
            priority = targets::tar_option_get("priority"),
            cue = targets::tar_option_get("cue")
   ) {
+  if (is.null(family)) {
+    family <- brms::gaussian()
+  }
   name_deparse <- paste0(deparse(substitute(name)), '_brms')
   
   name_formula <- paste(name_deparse, 'formula', sep = '_')
@@ -52,7 +55,7 @@ zar_brms <-
       formula = formula,
       data = data,
       prior = priors,
-      family = if(is.null(family)) gaussian() else family
+      family = family
     ),
     env = list(
       formula = as.symbol(name_formula),
@@ -64,7 +67,7 @@ zar_brms <-
     formula = as.symbol(name_formula),
     priors = as.symbol(name_priors),
     data = as.symbol(name_data),
-    family = if(is.null(family)) gaussian() else family,
+    family = family,
     chains = chains,
     iter = iter,
     cores = cores,
