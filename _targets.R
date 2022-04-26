@@ -6,15 +6,15 @@ library(zarg)
 
 c(
   tar_target(
-    scaled_data,
-    scale(mtcars)
+    cars_data,
+    mtcars
   ),
   zar_brms(
     cars,
     formula = mpg ~ hp,
     prior = c(prior(normal(-0.5, 0.2), class = 'b')),
     family = gaussian(),
-    data = scaled_data,
+    data = cars_data,
     chains = 4,
     iter = 2000,
     cores = 1,
