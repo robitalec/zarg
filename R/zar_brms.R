@@ -2,7 +2,7 @@
 #'
 #' @param name 
 #' @param formula 
-#' @param priors 
+#' @param prior 
 #' @param data 
 #' @param chains 
 #' @param iter 
@@ -16,7 +16,7 @@
 zar_brms <-
   function(name,
            formula,
-           priors,
+           prior,
            family = NULL,
            data,
            chains = 4,
@@ -40,32 +40,32 @@ zar_brms <-
   name_deparse <- paste0(deparse(substitute(name)), '_brms')
   
   name_formula <- paste(name_deparse, 'formula', sep = '_')
-  name_priors <- paste(name_deparse, 'priors', sep = '_')
+  name_prior <- paste(name_deparse, 'prior', sep = '_')
   name_data <- paste(name_deparse, 'data', sep = '_')
-  name_sample_priors <- paste(name_deparse, 'sample_priors', sep = '_')
+  name_sample_prior <- paste(name_deparse, 'sample_prior', sep = '_')
   name_stancode <- paste(name_deparse, 'stancode', sep = '_')
   name_sample <- paste(name_deparse, 'sample', sep = '_')
   
   
   command_formula <- substitute(brms::brmsformula(formula))
-  command_priors <- substitute(priors)
+  command_prior <- substitute(prior)
   command_data <- substitute(data)
   command_stancode <- substitute(
     make_stancode(
       formula = formula,
       data = data,
-      prior = priors,
+      prior = prior,
       family = family
     ),
     env = list(
       formula = as.symbol(name_formula),
-      priors = as.symbol(name_priors),
+      prior = as.symbol(name_prior),
       data = as.symbol(name_data),
       family = family
     ))
   env_sample <- list(
     formula = as.symbol(name_formula),
-    priors = as.symbol(name_priors),
+    prior = as.symbol(name_prior),
     data = as.symbol(name_data),
     family = family,
     chains = chains,
@@ -74,11 +74,11 @@ zar_brms <-
     save_model = save_model,
     backend = backend
   )
-  command_sample_priors <-  substitute(
+  command_sample_prior <-  substitute(
     brms::brm(
       formula = formula,
       data = data,
-      prior = priors,
+      prior = prior,
       family = family,
       sample_prior = 'only',
       chains = chains,
@@ -93,7 +93,7 @@ zar_brms <-
     brm(
       formula = formula,
       data = data,
-      prior = priors,
+      prior = prior,
       family = family,
       sample_prior = 'no',
       chains = chains,
@@ -119,9 +119,9 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
-  target_priors <- tar_target_raw(
-    name = name_priors,
-    command = command_priors,
+  target_prior <- tar_target_raw(
+    name = name_prior,
+    command = command_prior,
     packages = packages,
     library = library,
     format = format,
@@ -145,9 +145,9 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
-  target_sample_priors <- tar_target_raw(
-    name = name_sample_priors,
-    command = command_sample_priors,
+  target_sample_prior <- tar_target_raw(
+    name = name_sample_prior,
+    command = command_sample_prior,
     packages = packages,
     library = library,
     format = format,
@@ -192,17 +192,17 @@ zar_brms <-
   return(
     list(
       target_formula,
-      target_priors,
+      target_prior,
       target_data,
-      target_sample_priors,
+      target_sample_prior,
       target_stancode,
       target_sample
     )
   )
   
   
-  # name_priors <- paste(name_deparse, 'priors', sep = '_')
-  # name_sample_priors <- paste(name_deparse, 'sample_priors', sep = '_')
+  # name_prior <- paste(name_deparse, 'prior', sep = '_')
+  # name_sample_prior <- paste(name_deparse, 'sample_prior', sep = '_')
   # name_stancode <- paste(name_deparse, 'stancode', sep = '_')
   # name_sample <- paste(name_deparse, 'sample', sep = '_')
   
@@ -210,8 +210,8 @@ zar_brms <-
   
   # c(
     # zar_brms_formula(name_formula, substitute(formula))#,
-    # zar_brms_priors(name_priors, priors),
-    # zar_brms_sample_priors(name_sample_priors, symbol_formula, priors, data, chains, 
+    # zar_brms_prior(name_prior, prior),
+    # zar_brms_sample_prior(name_sample_prior, symbol_formula, prior, data, chains, 
     #                        iter, cores, save_model)
   # )
   
