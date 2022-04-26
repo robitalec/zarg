@@ -8,6 +8,32 @@
     data, priors sampled (for prior predictive simulation/checks),
     stancode, and fitted `brms` models.
 
+<!-- -->
+
+    library(targets)
+    library(brms)
+
+    devtools::install()
+    library(zarg)
+
+    c(
+      tar_target(
+        scaled_data,
+        scale(mtcars)
+      ),
+      zar_brms(
+        cars,
+        formula = mpg ~ hp,
+        prior = c(prior(normal(-0.5, 0.2), class = 'b')),
+        family = gaussian(),
+        data = scaled_data,
+        chains = 4,
+        iter = 2000,
+        cores = 1,
+        save_model = NULL
+      )
+    )
+
 ![](README_files/figure-gfm/tar_viz-1.png)
 
 ## Resources

@@ -11,6 +11,13 @@ output: github_document
 Simple target factory generating individual targets for priors,
 formula, data, priors sampled (for prior predictive simulation/checks), stancode, and fitted `brms` models. 
 
+```{r}
+#| echo = FALSE,
+#| warning = FALSE,
+#| comment = ''
+writeLines(readLines('_targets.R'))
+```
+
 ```{r tar_viz}
 #| include = FALSE
 targets::tar_visnetwork()
