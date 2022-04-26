@@ -7,7 +7,7 @@
 zar_brms(
   name,
   formula,
-  priors,
+  prior,
   family = NULL,
   data,
   chains = 4,
@@ -31,7 +31,7 @@ zar_brms(
 
 \item{formula}{}
 
-\item{priors}{}
+\item{prior}{}
 
 \item{data}{}
 
