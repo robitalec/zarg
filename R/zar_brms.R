@@ -35,7 +35,7 @@ zar_brms <-
            cue = targets::tar_option_get("cue")
   ) {
   if (is.null(family)) {
-    family <- brms::gaussian()
+    family <- stats::gaussian()
   }
   name_deparse <- paste0(deparse(substitute(name)), '_brms')
   
