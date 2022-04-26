@@ -12,7 +12,7 @@ c(
   zar_brms(
     cars,
     formula = mpg ~ hp,
-    priors = c(prior(normal(-0.5, 0.2), class = 'b')),
+    prior = c(prior(normal(-0.5, 0.2), class = 'b')),
     family = gaussian(),
     data = scaled_data,
     chains = 4,
