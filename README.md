@@ -1,32 +1,43 @@
 
 # `zarg`: Custom Target Functions and Factories
 
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+
+## Install
+
+``` r
+remotes::install_github('robitalec/zarg')
+```
+
 ## Functions/factories
 
--   `zar_brms`: a draft/WIP `brms` integration with targets. Simple
-    target factory generating individual targets for priors, formula,
-    data, priors sampled (for prior predictive simulation/checks),
-    stancode, and fitted `brms` models.
+- `zar_brms`: a draft/WIP `brms` integration with targets. Simple target
+  factory generating individual targets for priors, formula, data,
+  priors sampled (for prior predictive simulation/checks), stancode, and
+  fitted `brms` models.
 
 <!-- -->
 
     library(targets)
     library(brms)
 
-    devtools::install()
     library(zarg)
+
+    options('brms.threads' = 2)
 
     c(
       tar_target(
-        scaled_data,
-        scale(mtcars)
+        cars_data,
+        mtcars
       ),
       zar_brms(
         cars,
         formula = mpg ~ hp,
         prior = c(prior(normal(-0.5, 0.2), class = 'b')),
         family = gaussian(),
-        data = scaled_data,
+        data = cars_data,
         chains = 4,
         iter = 2000,
         cores = 1,
@@ -38,7 +49,7 @@
 
 ## Resources
 
--   <https://wlandau.github.io/targetopia/contributing.html>
+- <https://wlandau.github.io/targetopia/contributing.html>
 
 ## Thanks
 
