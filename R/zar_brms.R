@@ -6,6 +6,7 @@
 #' @param data 
 #' @param chains 
 #' @param iter 
+#' @param init
 #' @param cores 
 #' @param save_model 
 #'

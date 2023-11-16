@@ -13,6 +13,7 @@ zar_brms(
   chains = 4,
   iter = 2000,
   cores = 1,
+  init = NULL,
   save_model = NULL,
   backend = getOption("brms.backend", "cmdstanr"),
   packages = targets::tar_option_get("packages"),
@@ -42,9 +43,6 @@ zar_brms(
 \item{cores}{}
 
 \item{save_model}{}
-}
-\value{
-
 }
 \description{
 zar_brms
