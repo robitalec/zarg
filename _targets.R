@@ -3,6 +3,8 @@ library(brms)
 
 library(zarg)
 
+options('brms.threads' = 2)
+
 c(
   tar_target(
     cars_data,
