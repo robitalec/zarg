@@ -1,7 +1,6 @@
 library(targets)
 library(brms)
 
-devtools::install()
 library(zarg)
 
 c(
