@@ -1,8 +1,9 @@
 library(targets)
 library(brms)
 
-devtools::install()
 library(zarg)
+
+options('brms.threads' = 2)
 
 c(
   tar_target(

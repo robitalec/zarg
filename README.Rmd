@@ -4,6 +4,14 @@ output: github_document
 
 # `zarg`: Custom Target Functions and Factories
 
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+
+
+## Install
+
+```{r, eval = FALSE}
+remotes::install_github('robitalec/zarg')
+```
 
 ## Functions/factories
 
@@ -19,7 +27,8 @@ writeLines(readLines('_targets.R'))
 ```
 
 ```{r tar_viz}
-#| include = FALSE
+#| include = FALSE,
+#| eval = FALSE
 targets::tar_visnetwork()
 ```
 

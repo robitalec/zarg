@@ -6,6 +6,7 @@
 #' @param data 
 #' @param chains 
 #' @param iter 
+#' @param init
 #' @param cores 
 #' @param save_model 
 #'
@@ -22,6 +23,7 @@ zar_brms <-
            chains = 4,
            iter = 2000,
            cores = 1,
+           init = NULL,
            save_model = NULL,
            backend = getOption('brms.backend', 'cmdstanr'),
            packages = targets::tar_option_get("packages"),
@@ -71,6 +73,7 @@ zar_brms <-
     chains = chains,
     iter = iter,
     cores = cores,
+    init = init,
     save_model = save_model,
     backend = backend
   )
@@ -84,6 +87,7 @@ zar_brms <-
       chains = chains,
       iter = iter,
       cores = cores,
+      init = init,
       save_model = save_model,
       backend = backend
     ),
