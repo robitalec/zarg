@@ -14,6 +14,7 @@ zar_brms(
   iter = 2000,
   cores = 1,
   init = NULL,
+  control = NULL,
   save_model = NULL,
   backend = getOption("brms.backend", "cmdstanr"),
   packages = targets::tar_option_get("packages"),
@@ -40,7 +41,7 @@ zar_brms(
 
 \item{iter}{}
 
-\item{cores}{}
+\item{control}{}
 
 \item{save_model}{}
 }
