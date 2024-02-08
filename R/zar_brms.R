@@ -55,7 +55,7 @@ zar_brms <-
   command_prior <- substitute(prior)
   command_data <- substitute(data)
   command_stancode <- substitute(
-    make_stancode(
+    brms::make_stancode(
       formula = formula,
       data = data,
       prior = prior,
@@ -96,7 +96,7 @@ zar_brms <-
     env = env_sample
   )
   command_sample <- substitute(
-    brm(
+    brms::brm(
       formula = formula,
       data = data,
       prior = prior,
