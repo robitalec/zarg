@@ -14,4 +14,5 @@ Imports:
     qs,
     targets
 Suggests:
-    cmdstanr
+    cmdstanr,
+    testthat
