@@ -77,6 +77,7 @@ zar_brms <-
     cores = cores,
     init = init,
     save_model = save_model,
+    control = control,
     backend = backend
   )
   command_sample_prior <-  substitute(
@@ -91,6 +92,7 @@ zar_brms <-
       cores = cores,
       init = init,
       save_model = save_model,
+      control = control,
       backend = backend
     ),
     env = env_sample
