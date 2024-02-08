@@ -7,8 +7,9 @@
 #' @param chains 
 #' @param iter 
 #' @param init
-#' @param cores 
+#' @param cores
 #' @param save_model 
+#' @param control
 #'
 #' @return
 #' @export
@@ -24,6 +25,7 @@ zar_brms <-
            iter = 2000,
            cores = 1,
            init = NULL,
+           control = NULL,
            save_model = NULL,
            backend = getOption('brms.backend', 'cmdstanr'),
            packages = targets::tar_option_get("packages"),
