@@ -7,8 +7,9 @@
 #' @param chains 
 #' @param iter 
 #' @param init
-#' @param cores 
+#' @param cores
 #' @param save_model 
+#' @param control
 #'
 #' @return
 #' @export
@@ -24,6 +25,7 @@ zar_brms <-
            iter = 2000,
            cores = 1,
            init = NULL,
+           control = NULL,
            save_model = NULL,
            backend = getOption('brms.backend', 'cmdstanr'),
            packages = targets::tar_option_get("packages"),
@@ -53,7 +55,7 @@ zar_brms <-
   command_prior <- substitute(prior)
   command_data <- substitute(data)
   command_stancode <- substitute(
-    make_stancode(
+    brms::make_stancode(
       formula = formula,
       data = data,
       prior = prior,
@@ -75,6 +77,7 @@ zar_brms <-
     cores = cores,
     init = init,
     save_model = save_model,
+    control = control,
     backend = backend
   )
   command_sample_prior <-  substitute(
@@ -89,12 +92,13 @@ zar_brms <-
       cores = cores,
       init = init,
       save_model = save_model,
+      control = control,
       backend = backend
     ),
     env = env_sample
   )
   command_sample <- substitute(
-    brm(
+    brms::brm(
       formula = formula,
       data = data,
       prior = prior,

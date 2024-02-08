@@ -1,24 +1,31 @@
 library(targets)
 library(brms)
-
+library(data.table)
 library(zarg)
 
 options('brms.threads' = 2)
 
 c(
   tar_target(
-    cars_data,
-    mtcars
+    cars,
+    data.table(mtcars)
+  ),
+  tar_target(
+    scaled_cars,
+    cars[, c('scaled_mpg', 'scaled_hp') := .(scale(mpg), scale(hp))]
   ),
   zar_brms(
     cars,
-    formula = mpg ~ hp,
-    prior = c(prior(normal(-0.5, 0.2), class = 'b')),
+    formula = scaled_mpg ~ scaled_hp,
+    prior = c(prior(normal(0, 0.5), class = 'b'),
+              prior(normal(0, 0.5), class = 'Intercept'),
+              prior(exponential(1), class = 'sigma')),
     family = gaussian(),
-    data = cars_data,
+    data = scaled_cars,
     chains = 4,
     iter = 2000,
     cores = 1,
+    control = list(adapt_delta = 0.9),
     save_model = NULL
   )
 )
