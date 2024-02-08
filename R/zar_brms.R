@@ -114,7 +114,7 @@ zar_brms <-
   )
   
   
-  target_formula <- tar_target_raw(
+  target_formula <- targets::tar_target_raw(
     name = name_formula,
     command = command_formula,
     packages = packages,
@@ -127,7 +127,7 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
-  target_prior <- tar_target_raw(
+  target_prior <- targets::tar_target_raw(
     name = name_prior,
     command = command_prior,
     packages = packages,
@@ -140,7 +140,7 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
-  target_data <- tar_target_raw(
+  target_data <- targets::tar_target_raw(
     name = name_data,
     command = command_data,
     packages = packages,
@@ -153,7 +153,7 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
-  target_sample_prior <- tar_target_raw(
+  target_sample_prior <- targets::tar_target_raw(
     name = name_sample_prior,
     command = command_sample_prior,
     packages = packages,
@@ -166,7 +166,7 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
-  target_stancode <- tar_target_raw(
+  target_stancode <- targets::tar_target_raw(
     name = name_stancode,
     command = command_stancode,
     packages = packages,
@@ -179,7 +179,7 @@ zar_brms <-
     priority = priority,
     cue = cue
   )
-  target_sample <- tar_target_raw(
+  target_sample <- targets::tar_target_raw(
     name = name_sample,
     command = command_sample,
     packages = packages,
