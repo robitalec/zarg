@@ -1,6 +1,6 @@
 Package: zarg
 Title: Custom Target Functions and Factories
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Authors@R: 
     person("Alec L.", "Robitaille", , "robit.alec@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4706-1762"))
