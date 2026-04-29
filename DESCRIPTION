@@ -11,7 +11,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.0
 Imports: 
     brms,
-    qs,
+    qs2,
     targets
 Suggests:
     cmdstanr
